@@ -1,0 +1,212 @@
+# Home Assistant Configuration Example
+# Add this to your configuration.yaml file
+
+# OPTION 1: If you don't have MQTT configured yet, just include the entire file
+# Uncomment the line below and comment out OPTION 2
+# <<: !include mqtt_sensors.yaml
+
+# OPTION 2: If you already have MQTT broker configured
+# Add the broker details here and reference mqtt_sensors.yaml for sensors
+mqtt:
+  broker: localhost  # Change to your MQTT broker address
+  port: 1883
+  # username: your_username  # Uncomment if authentication is required
+  # password: your_password  # Uncomment if authentication is required
+  
+  # Note: mqtt_sensors.yaml contains a complete mqtt: section with all sensors
+  # You'll need to copy the sensor, binary_sensor, and switch sections from 
+  # mqtt_sensors.yaml and paste them here under this mqtt: section
+  # OR use the file as-is by using OPTION 1 above
+
+# Logger configuration for MQTT debugging (optional)
+logger:
+  default: warning
+  logs:
+    homeassistant.components.mqtt: debug
+
+# Recorder configuration to track sensor history
+recorder:
+  db_url: sqlite:////config/home-assistant_v2.db
+  purge_keep_days: 30
+  include:
+    entities:
+      - sensor.ua
+      - sensor.ub
+      - sensor.uc
+      - sensor.ia
+      - sensor.ib
+      - sensor.ic
+      - sensor.pt
+      - sensor.iactive
+      - sensor.eactive
+      - sensor.temp
+      - sensor.freq
+
+# History configuration
+history:
+  include:
+    entities:
+      - sensor.ua
+      - sensor.ub
+      - sensor.uc
+      - sensor.ia
+      - sensor.ib
+      - sensor.ic
+      - sensor.pt
+      - sensor.iactive
+      - sensor.eactive
+
+# InfluxDB integration (optional - for advanced users)
+# influxdb:
+#   host: localhost
+#   port: 8086
+#   database: homeassistant
+#   include:
+#     entities:
+#       - sensor.pt
+#       - sensor.iactive
+#       - sensor.eactive
+#       - sensor.temp
+
+# Energy Dashboard configuration
+energy:
+  sources:
+    - type: grid
+      name: "Grid Connection"
+      flow_from:
+        - entity: sensor.iactive  # Import energy
+          stat_cost: 0.15  # Cost per kWh (optional)
+      flow_to:
+        - entity: sensor.eactive  # Export energy
+          compensation: 0.10  # Compensation per kWh (optional)
+
+# Template sensors for additional calculations (optional)
+template:
+  - sensor:
+      - name: "Average Voltage"
+        unit_of_measurement: "V"
+        state: >
+          {% set ua = states('sensor.ua') | float(0) %}
+          {% set ub = states('sensor.ub') | float(0) %}
+          {% set uc = states('sensor.uc') | float(0) %}
+          {{ ((ua + ub + uc) / 3) | round(2) }}
+        device_class: voltage
+        
+      - name: "Average Current"
+        unit_of_measurement: "A"
+        state: >
+          {% set ia = states('sensor.ia') | float(0) %}
+          {% set ib = states('sensor.ib') | float(0) %}
+          {% set ic = states('sensor.ic') | float(0) %}
+          {{ ((ia + ib + ic) / 3) | round(3) }}
+        device_class: current
+        
+      - name: "Daily Energy Import"
+        unit_of_measurement: "kWh"
+        state: >
+          {{ states('sensor.iactive') | float(0) }}
+        device_class: energy
+        state_class: total_increasing
+        
+      - name: "Phase Balance Percentage"
+        unit_of_measurement: "%"
+        state: >
+          {% set pa = states('sensor.pa') | float(0) %}
+          {% set pb = states('sensor.pb') | float(0) %}
+          {% set pc = states('sensor.pc') | float(0) %}
+          {% set avg = (pa + pb + pc) / 3 %}
+          {% if avg > 0 %}
+            {% set max_dev = [((pa - avg) / avg * 100) | abs, ((pb - avg) / avg * 100) | abs, ((pc - avg) / avg * 100) | abs] | max %}
+            {{ (100 - max_dev) | round(1) }}
+          {% else %}
+            0
+          {% endif %}
+
+# Automations
+automation:
+  # High power alert
+  - alias: "Alert on High Power"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.pt
+        above: 10
+    action:
+      - service: notify.persistent_notification
+        data:
+          title: "High Power Alert"
+          message: "Total power consumption is {{ states('sensor.pt') }} kW"
+          
+  # Temperature warning
+  - alias: "Temperature Warning"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.temp
+        above: 45
+    action:
+      - service: notify.persistent_notification
+        data:
+          title: "Temperature Warning"
+          message: "Device temperature is {{ states('sensor.temp') }}°C"
+          
+  # Voltage imbalance alert
+  - alias: "Voltage Imbalance"
+    trigger:
+      - platform: template
+        value_template: >
+          {% set ua = states('sensor.ua') | float(0) %}
+          {% set ub = states('sensor.ub') | float(0) %}
+          {% set uc = states('sensor.uc') | float(0) %}
+          {% set avg = (ua + ub + uc) / 3 %}
+          {{ ((ua - avg) | abs > 10) or ((ub - avg) | abs > 10) or ((uc - avg) | abs > 10) }}
+    action:
+      - service: notify.persistent_notification
+        data:
+          title: "Voltage Imbalance Detected"
+          message: "Phase voltages: A={{ states('sensor.ua') }}V, B={{ states('sensor.ub') }}V, C={{ states('sensor.uc') }}V"
+          
+  # Relay auto-off on overcurrent
+  - alias: "Overcurrent Protection"
+    trigger:
+      - platform: numeric_state
+        entity_id: 
+          - sensor.ia
+          - sensor.ib
+          - sensor.ic
+        above: 20
+    action:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.relay
+      - service: notify.persistent_notification
+        data:
+          title: "Overcurrent Protection"
+          message: "Relay turned off due to overcurrent on phase {{ trigger.to_state.attributes.friendly_name }}"
+
+# Input numbers for threshold configuration (optional)
+input_number:
+  power_threshold:
+    name: "Power Alert Threshold"
+    min: 0
+    max: 50
+    step: 0.5
+    unit_of_measurement: "kW"
+    icon: mdi:flash
+    
+  temp_threshold:
+    name: "Temperature Alert Threshold"
+    min: 20
+    max: 80
+    step: 1
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+
+# Input boolean for relay automation enable/disable
+input_boolean:
+  relay_automation_enabled:
+    name: "Enable Relay Automation"
+    icon: mdi:robot
+
+# Notification configuration
+notify:
+  - platform: persistent_notification
+    name: "system_alerts"

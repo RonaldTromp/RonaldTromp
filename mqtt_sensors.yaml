@@ -1,0 +1,691 @@
+# Home Assistant MQTT Sensor Configuration
+# Device: Rolectro R12 Energy Monitor (31212256C0629)
+# 
+# This configuration defines MQTT sensors for the Rolectro R12 energy monitoring device.
+# All sensors share the same state topic and extract different values from the JSON payload.
+
+mqtt:
+  sensor:
+    # Voltage Sensors (Phase to Neutral)
+    - platform: mqtt
+      name: "Ua"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ua if value_json.ua is defined else ''}}"
+      unit_of_measurement: "V"
+      unique_id: "31212256C0629_ua"
+      device_class: "voltage"
+      state_class: "measurement"
+      icon: "mdi:flash-triangle-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Ub"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ub if value_json.ub is defined else ''}}"
+      unit_of_measurement: "V"
+      unique_id: "31212256C0629_ub"
+      device_class: "voltage"
+      state_class: "measurement"
+      icon: "mdi:flash-triangle-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Uc"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.uc if value_json.uc is defined else ''}}"
+      unit_of_measurement: "V"
+      unique_id: "31212256C0629_uc"
+      device_class: "voltage"
+      state_class: "measurement"
+      icon: "mdi:flash-triangle-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Current Sensors
+    - platform: mqtt
+      name: "Ia"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ia if value_json.ia is defined else ''}}"
+      unit_of_measurement: "A"
+      unique_id: "31212256C0629_ia"
+      device_class: "current"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Ib"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ib if value_json.ib is defined else ''}}"
+      unit_of_measurement: "A"
+      unique_id: "31212256C0629_ib"
+      device_class: "current"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Ic"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ic if value_json.ic is defined else ''}}"
+      unit_of_measurement: "A"
+      unique_id: "31212256C0629_ic"
+      device_class: "current"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Voltage Sensors (Phase to Phase)
+    - platform: mqtt
+      name: "Uab"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.uab if value_json.uab is defined else ''}}"
+      unit_of_measurement: "V"
+      unique_id: "31212256C0629_uab"
+      device_class: "voltage"
+      state_class: "measurement"
+      icon: "mdi:flash-triangle"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Ubc"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ubc if value_json.ubc is defined else ''}}"
+      unit_of_measurement: "V"
+      unique_id: "31212256C0629_ubc"
+      device_class: "voltage"
+      state_class: "measurement"
+      icon: "mdi:flash-triangle"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Uca"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.uca if value_json.uca is defined else ''}}"
+      unit_of_measurement: "V"
+      unique_id: "31212256C0629_uca"
+      device_class: "voltage"
+      state_class: "measurement"
+      icon: "mdi:flash-triangle"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Active Power Sensors
+    - platform: mqtt
+      name: "Pa"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pa if value_json.pa is defined else ''}}"
+      unit_of_measurement: "kW"
+      unique_id: "31212256C0629_pa"
+      device_class: "power"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pb"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pb if value_json.pb is defined else ''}}"
+      unit_of_measurement: "kW"
+      unique_id: "31212256C0629_pb"
+      device_class: "power"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pc"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pc if value_json.pc is defined else ''}}"
+      unit_of_measurement: "kW"
+      unique_id: "31212256C0629_pc"
+      device_class: "power"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pt"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pt if value_json.pt is defined else ''}}"
+      unit_of_measurement: "kW"
+      unique_id: "31212256C0629_pt"
+      device_class: "power"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Reactive Power Sensors
+    - platform: mqtt
+      name: "Qa"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.qa if value_json.qa is defined else ''}}"
+      unit_of_measurement: "kvar"
+      unique_id: "31212256C0629_qa"
+      device_class: "reactive_power"
+      state_class: "measurement"
+      icon: "mdi:beer-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Qb"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.qb if value_json.qb is defined else ''}}"
+      unit_of_measurement: "kvar"
+      unique_id: "31212256C0629_qb"
+      device_class: "reactive_power"
+      state_class: "measurement"
+      icon: "mdi:beer-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Qc"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.qc if value_json.qc is defined else ''}}"
+      unit_of_measurement: "kvar"
+      unique_id: "31212256C0629_qc"
+      device_class: "reactive_power"
+      state_class: "measurement"
+      icon: "mdi:beer-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Qt"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.qt if value_json.qt is defined else ''}}"
+      unit_of_measurement: "kvar"
+      unique_id: "31212256C0629_qt"
+      device_class: "reactive_power"
+      state_class: "measurement"
+      icon: "mdi:beer-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Frequency Sensor
+    - platform: mqtt
+      name: "Freq"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.freq if value_json.freq is defined else ''}}"
+      unit_of_measurement: "Hz"
+      unique_id: "31212256C0629_freq"
+      device_class: "frequency"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Demand Power Sensors
+    - platform: mqtt
+      name: "Pdm"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pdm if value_json.pdm is defined else ''}}"
+      unit_of_measurement: "kW"
+      unique_id: "31212256C0629_pdm"
+      device_class: "power"
+      state_class: "measurement"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Qdm"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.qdm if value_json.qdm is defined else ''}}"
+      unit_of_measurement: "kvar"
+      unique_id: "31212256C0629_qdm"
+      device_class: "reactive_power"
+      state_class: "measurement"
+      icon: "mdi:beer-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Sdm"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.sdm if value_json.sdm is defined else ''}}"
+      unit_of_measurement: "VA"
+      unique_id: "31212256C0629_sdm"
+      device_class: "apparent_power"
+      state_class: "measurement"
+      icon: "mdi:beer"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Apparent Power Sensors
+    - platform: mqtt
+      name: "Sa"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.sa if value_json.sa is defined else ''}}"
+      unit_of_measurement: "VA"
+      unique_id: "31212256C0629_sa"
+      device_class: "apparent_power"
+      state_class: "measurement"
+      icon: "mdi:beer"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Sb"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.sb if value_json.sb is defined else ''}}"
+      unit_of_measurement: "VA"
+      unique_id: "31212256C0629_sb"
+      device_class: "apparent_power"
+      state_class: "measurement"
+      icon: "mdi:beer"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Sc"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.sc if value_json.sc is defined else ''}}"
+      unit_of_measurement: "VA"
+      unique_id: "31212256C0629_sc"
+      device_class: "apparent_power"
+      state_class: "measurement"
+      icon: "mdi:beer"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "St"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.st if value_json.st is defined else ''}}"
+      unit_of_measurement: "VA"
+      unique_id: "31212256C0629_st"
+      device_class: "apparent_power"
+      state_class: "measurement"
+      icon: "mdi:beer"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Temperature Sensor
+    - platform: mqtt
+      name: "Temp"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.temp if value_json.temp is defined else ''}}"
+      unit_of_measurement: "°C"
+      unique_id: "31212256C0629_temp"
+      device_class: "temperature"
+      state_class: "measurement"
+      icon: "mdi:thermometer"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Power Factor Sensors
+    - platform: mqtt
+      name: "Pfa"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pfa if value_json.pfa is defined else ''}}"
+      unique_id: "31212256C0629_pfa"
+      device_class: "power_factor"
+      state_class: "measurement"
+      icon: "mdi:angle-acute"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pfb"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pfb if value_json.pfb is defined else ''}}"
+      unique_id: "31212256C0629_pfb"
+      device_class: "power_factor"
+      state_class: "measurement"
+      icon: "mdi:angle-acute"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pfc"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pfc if value_json.pfc is defined else ''}}"
+      unique_id: "31212256C0629_pfc"
+      device_class: "power_factor"
+      state_class: "measurement"
+      icon: "mdi:angle-acute"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pft"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pft if value_json.pft is defined else ''}}"
+      unique_id: "31212256C0629_pft"
+      device_class: "power_factor"
+      state_class: "measurement"
+      icon: "mdi:angle-acute"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Total Harmonic Distortion (THD) Sensors - Voltage
+    - platform: mqtt
+      name: "UaTHD"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.uathd if value_json.uathd is defined else ''}}"
+      unit_of_measurement: "%"
+      unique_id: "31212256C0629_uathd"
+      state_class: "measurement"
+      icon: "mdi:waveform"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "UbTHD"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ubthd if value_json.ubthd is defined else ''}}"
+      unit_of_measurement: "%"
+      unique_id: "31212256C0629_ubthd"
+      state_class: "measurement"
+      icon: "mdi:waveform"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "UcTHD"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ucthd if value_json.ucthd is defined else ''}}"
+      unit_of_measurement: "%"
+      unique_id: "31212256C0629_ucthd"
+      state_class: "measurement"
+      icon: "mdi:waveform"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Total Harmonic Distortion (THD) Sensors - Current
+    - platform: mqtt
+      name: "IaTHD"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.iathd if value_json.iathd is defined else ''}}"
+      unit_of_measurement: "%"
+      unique_id: "31212256C0629_iathd"
+      state_class: "measurement"
+      icon: "mdi:waveform"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "IbTHD"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ibthd if value_json.ibthd is defined else ''}}"
+      unit_of_measurement: "%"
+      unique_id: "31212256C0629_ibthd"
+      state_class: "measurement"
+      icon: "mdi:waveform"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "IcTHD"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.icthd if value_json.icthd is defined else ''}}"
+      unit_of_measurement: "%"
+      unique_id: "31212256C0629_icthd"
+      state_class: "measurement"
+      icon: "mdi:waveform"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Energy Sensors - Import
+    - platform: mqtt
+      name: "iActive"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.iactive if value_json.iactive is defined else ''}}"
+      unit_of_measurement: "kWh"
+      unique_id: "31212256C0629_iactive"
+      device_class: "energy"
+      state_class: "total_increasing"
+      icon: "mdi:home-import-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Energy Sensors - Export
+    - platform: mqtt
+      name: "eActive"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.eactive if value_json.eactive is defined else ''}}"
+      unit_of_measurement: "kWh"
+      unique_id: "31212256C0629_eactive"
+      device_class: "energy"
+      state_class: "total_increasing"
+      icon: "mdi:home-export-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Reactive Energy Sensors - Import
+    - platform: mqtt
+      name: "iReact"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ireact if value_json.ireact is defined else ''}}"
+      unit_of_measurement: "kvarh"
+      unique_id: "31212256C0629_ireact"
+      state_class: "total_increasing"
+      icon: "mdi:home-import-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Reactive Energy Sensors - Export
+    - platform: mqtt
+      name: "eReact"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.ereact if value_json.ereact is defined else ''}}"
+      unit_of_measurement: "kvarh"
+      unique_id: "31212256C0629_ereact"
+      state_class: "total_increasing"
+      icon: "mdi:home-export-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Per-Phase Energy Sensors
+    - platform: mqtt
+      name: "Pos_en_a"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pos_en_a if value_json.pos_en_a is defined else ''}}"
+      unit_of_measurement: "kWh"
+      unique_id: "31212256C0629_pos_en_a"
+      device_class: "energy"
+      state_class: "total_increasing"
+      icon: "mdi:home-import-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pos_en_b"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pos_en_b if value_json.pos_en_b is defined else ''}}"
+      unit_of_measurement: "kWh"
+      unique_id: "31212256C0629_pos_en_b"
+      device_class: "energy"
+      state_class: "total_increasing"
+      icon: "mdi:home-import-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    - platform: mqtt
+      name: "Pos_en_c"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.pos_en_c if value_json.pos_en_c is defined else ''}}"
+      unit_of_measurement: "kWh"
+      unique_id: "31212256C0629_pos_en_c"
+      device_class: "energy"
+      state_class: "total_increasing"
+      icon: "mdi:home-import-outline"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+    # Last Update Timestamp
+    - platform: mqtt
+      name: "Last Update"
+      state_topic: "homeassistant/sensor/31212256C0629"
+      value_template: "{{value_json.time}}"
+      unique_id: "31212256C0629_lastupdate"
+      device_class: "timestamp"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+  # Binary Sensors
+  binary_sensor:
+    - platform: mqtt
+      name: "Input"
+      state_topic: "homeassistant/binary_sensor/31212256C0629_input/state"
+      payload_on: "ON"
+      payload_off: "OFF"
+      unique_id: "input_31212256C0629"
+      device_class: "power"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
+
+  # Switches
+  switch:
+    - platform: mqtt
+      name: "Relay"
+      command_topic: "homeassistant/switch/31212256C0629_relay/set"
+      state_topic: "homeassistant/switch/31212256C0629_relay/state"
+      payload_on: "ON"
+      payload_off: "OFF"
+      unique_id: "relay_31212256C0629"
+      device:
+        identifiers: ["31212256C0629"]
+        name: "31212256C0629"
+        model: "R12"
+        manufacturer: "Rolectro"
