@@ -212,7 +212,7 @@ automation:
     trigger:
       - platform: numeric_state
         entity_id: sensor.pt
-        above: 10
+        above: 10  # Adjust this threshold based on your requirements
     action:
       - service: notify.mobile_app
         data:

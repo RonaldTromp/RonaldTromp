@@ -1,18 +1,22 @@
 # Home Assistant Configuration Example
 # Add this to your configuration.yaml file
 
-# MQTT Configuration
+# OPTION 1: If you don't have MQTT configured yet, just include the entire file
+# Uncomment the line below and comment out OPTION 2
+# <<: !include mqtt_sensors.yaml
+
+# OPTION 2: If you already have MQTT broker configured
+# Add the broker details here and reference mqtt_sensors.yaml for sensors
 mqtt:
   broker: localhost  # Change to your MQTT broker address
   port: 1883
   # username: your_username  # Uncomment if authentication is required
   # password: your_password  # Uncomment if authentication is required
   
-  # Include the sensor configuration
-  sensor: !include mqtt_sensors.yaml
-  
-# Alternative: If you already have MQTT configured, just merge the sensor definitions
-# from mqtt_sensors.yaml into your existing mqtt: section
+  # Note: mqtt_sensors.yaml contains a complete mqtt: section with all sensors
+  # You'll need to copy the sensor, binary_sensor, and switch sections from 
+  # mqtt_sensors.yaml and paste them here under this mqtt: section
+  # OR use the file as-is by using OPTION 1 above
 
 # Logger configuration for MQTT debugging (optional)
 logger:
