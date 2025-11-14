@@ -1,0 +1,19 @@
+{
+  "platform": "mqtt",
+  "name": "Uc",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.uc if value_json.uc is defined else ''}}",
+  "unit_of_measurement": "V",
+  "unique_id": "31212256C0630_uc",
+  "device_class": "VOLTAGE",
+  "state_class": "MEASUREMENT",
+  "icon": "mdi:flash-triangle-outline",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

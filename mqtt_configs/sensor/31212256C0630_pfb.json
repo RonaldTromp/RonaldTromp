@@ -1,0 +1,17 @@
+{
+  "platform": "mqtt",
+  "name": "Pfb",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.pfb if value_json.pfb is defined else ''}}",
+  "unique_id": "31212256C0630_pfb",
+  "state_class": "MEASUREMENT",
+  "icon": "mdi:angle-acute",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

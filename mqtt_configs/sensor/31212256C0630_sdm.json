@@ -1,0 +1,19 @@
+{
+  "platform": "mqtt",
+  "name": "Sdm",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.sdm if value_json.sdm is defined else ''}}",
+  "unit_of_measurement": "VA",
+  "unique_id": "31212256C0630_sdm",
+  "device_class": "APPARENT_POWER",
+  "state_class": "MEASUREMENT",
+  "icon": "mdi:beer",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

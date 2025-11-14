@@ -1,0 +1,19 @@
+{
+  "platform": "mqtt",
+  "name": "Temp",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.temp if value_json.temp is defined else ''}}",
+  "unit_of_measurement": "°C",
+  "unique_id": "31212256C0630_temp",
+  "device_class": "TEMPERATURE",
+  "state_class": "MEASUREMENT",
+  "icon": "mdi:thermometer",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

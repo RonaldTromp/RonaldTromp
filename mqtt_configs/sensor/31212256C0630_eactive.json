@@ -1,0 +1,19 @@
+{
+  "platform": "mqtt",
+  "name": "eActive",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.eactive if value_json.eactive is defined else ''}}",
+  "unit_of_measurement": "kWh",
+  "unique_id": "31212256C0630_eactive",
+  "device_class": "ENERGY",
+  "state_class": "TOTAL_INCREASING",
+  "icon": "mdi:home-export-outline",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

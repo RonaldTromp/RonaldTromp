@@ -1,0 +1,16 @@
+{
+  "platform": "mqtt",
+  "name": "Last Update",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.time}}",
+  "unique_id": "31212256C0630_lastupdate",
+  "device_class": "timestamp",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}
