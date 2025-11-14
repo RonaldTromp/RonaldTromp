@@ -1,0 +1,18 @@
+{
+  "platform": "mqtt",
+  "name": "Pdm",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.pdm if value_json.pdm is defined else ''}}",
+  "unit_of_measurement": "kW",
+  "unique_id": "31212256C0630_pdm",
+  "device_class": "POWER",
+  "state_class": "MEASUREMENT",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "platform": "mqtt",
+  "name": "Input",
+  "state_topic": "homeassistant/binary_sensor/31212256C0630_input/state",
+  "payload_on": "ON",
+  "payload_off": "OFF",
+  "unique_id": "input_31212256C0630",
+  "device_class": "POWER",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

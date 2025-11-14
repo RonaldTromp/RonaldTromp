@@ -1,0 +1,18 @@
+{
+  "platform": "mqtt",
+  "name": "Freq",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.freq if value_json.freq is defined else ''}}",
+  "unit_of_measurement": "Hz",
+  "unique_id": "31212256C0630_freq",
+  "device_class": "FREQUENCY",
+  "state_class": "MEASUREMENT",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

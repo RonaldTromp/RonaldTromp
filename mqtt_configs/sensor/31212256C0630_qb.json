@@ -1,0 +1,19 @@
+{
+  "platform": "mqtt",
+  "name": "Qb",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.qb if value_json.qb is defined else ''}}",
+  "unit_of_measurement": "kvar",
+  "unique_id": "31212256C0630_qb",
+  "device_class": "REACTIVE_POWER",
+  "state_class": "MEASUREMENT",
+  "icon": "mdi:beer-outline",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

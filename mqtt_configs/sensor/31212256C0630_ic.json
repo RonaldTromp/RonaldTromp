@@ -1,0 +1,18 @@
+{
+  "platform": "mqtt",
+  "name": "Ic",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.ic if value_json.ic is defined else ''}}",
+  "unit_of_measurement": "A",
+  "unique_id": "31212256C0630_ic",
+  "device_class": "CURRENT",
+  "state_class": "MEASUREMENT",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

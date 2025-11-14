@@ -1,0 +1,19 @@
+{
+  "platform": "mqtt",
+  "name": "eReact",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.ereact if value_json.ereact is defined else ''}}",
+  "unit_of_measurement": "kvarh",
+  "unique_id": "31212256C0630_ereact",
+  "device_class": "REACTIVE_ENERGY",
+  "state_class": "TOTAL_INCREASING",
+  "icon": "mdi:home-export-outline",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}

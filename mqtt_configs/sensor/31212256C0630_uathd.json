@@ -1,0 +1,18 @@
+{
+  "platform": "mqtt",
+  "name": "UaTHD",
+  "state_topic": "homeassistant/sensor/31212256C0630",
+  "value_template": "{{value_json.uathd if value_json.uathd is defined else ''}}",
+  "unit_of_measurement": "%",
+  "unique_id": "31212256C0630_uathd",
+  "state_class": "MEASUREMENT",
+  "icon": "mdi:waveform",
+  "device": {
+    "identifiers": [
+      "31212256C0630"
+    ],
+    "name": "31212256C0630",
+    "model": "R12",
+    "manufacturer": "Rolectro"
+  }
+}
